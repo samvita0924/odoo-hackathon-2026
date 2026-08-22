@@ -1,0 +1,2 @@
+import { CircleAlert } from 'lucide-react'
+export default function ErrorState({ message = 'Something went wrong. Please try again.' }) { return <div className="flex items-center gap-3 rounded-2xl border border-[#f0d6d0] bg-[#fff7f5] p-4 text-sm text-[#a85142]"><CircleAlert size={19} />{message}</div> }

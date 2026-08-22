@@ -1,0 +1,2 @@
+import Badge from '../../components/common/Badge.jsx'
+export default function PageShell({ eyebrow, title, description, children }) { return <div className="space-y-7"><div className="flex flex-col justify-between gap-4 sm:flex-row sm:items-end"><div><p className="text-xs font-bold uppercase tracking-[0.16em] text-[#8aa82f]">{eyebrow}</p><h2 className="display-font mt-2 text-3xl tracking-tight sm:text-4xl">{title}</h2><p className="mt-2 text-sm text-[#81908a]">{description}</p></div><Badge tone="success">Workspace active</Badge></div>{children}</div>}

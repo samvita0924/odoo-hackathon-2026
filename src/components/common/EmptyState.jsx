@@ -1,0 +1,2 @@
+import { Inbox } from 'lucide-react'
+export default function EmptyState({ title = 'Nothing here yet', description = 'Your updates will appear here.' }) { return <div className="flex flex-col items-center justify-center rounded-2xl border border-dashed border-[#d7e1db] bg-white p-10 text-center"><Inbox className="mb-3 text-[#9aaba3]" size={28} /><h3 className="font-bold text-[#34413c]">{title}</h3><p className="mt-1 text-sm text-[#81908a]">{description}</p></div> }
