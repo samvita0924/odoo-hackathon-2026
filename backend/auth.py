@@ -4,7 +4,7 @@ from typing import Annotated, Generator, Literal
 
 import bcrypt
 from fastapi import APIRouter, Depends, HTTPException, status
-from fastapi.security import OAuth2PasswordBearer
+from fastapi.security import OAuth2PasswordBearer, OAuth2PasswordRequestForm
 from jose import JWTError, jwt
 from pydantic import BaseModel, ConfigDict
 from sqlalchemy import select
@@ -125,11 +125,11 @@ def register_user(
 
 @router.post("/login", response_model=TokenResponse)
 def login_user(
-    request: LoginRequest,
+    form_data: Annotated[OAuth2PasswordRequestForm, Depends()],
     db: Annotated[Session, Depends(get_db)],
 ) -> TokenResponse:
-    user = db.scalar(select(User).where(User.email == request.email))
-    if user is None or not verify_password(request.password, user.hashed_password):
+    user = db.scalar(select(User).where(User.email == form_data.username))
+    if user is None or not verify_password(form_data.password, user.hashed_password):
         raise HTTPException(
             status_code=status.HTTP_401_UNAUTHORIZED,
             detail="Invalid email or password",
