@@ -1,0 +1,2 @@
+export function attendanceHealth(records, employeeId) { const mine = records.filter((record) => record.employeeId === employeeId && record.status !== 'Leave'); if (!mine.length) return 0; const score = mine.reduce((total, record) => total + (record.status === 'Present' ? 1 : record.status === 'Half-day' ? 0.5 : 0), 0); return Math.round((score / mine.length) * 100) }
+export function healthLabel(value) { return value >= 90 ? 'Excellent' : value >= 75 ? 'Good' : 'Needs Attention' }
