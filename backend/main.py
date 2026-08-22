@@ -2,6 +2,7 @@ from fastapi import FastAPI
 
 from auth import router as auth_router
 from database import Base, engine
+from employees import router as employee_router
 from models.attendance import Attendance
 from models.employee import Employee
 from models.leave import Leave
@@ -11,6 +12,7 @@ from models.user import User
 
 app = FastAPI()
 app.include_router(auth_router)
+app.include_router(employee_router)
 
 
 @app.on_event("startup")
